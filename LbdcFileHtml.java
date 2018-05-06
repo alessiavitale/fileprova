@@ -37,12 +37,12 @@ import java.util.regex.Pattern;
  */
 public class LbdcFileHtml extends LbdcFile {
     Pattern billP = Pattern.compile(
-            "<a .+?>(.+?)</a>" + 										//bill number
-                    "(.+?)<br>\\s*" + 											//sponsors: (sponsor) (CO: ((, )?cosponsor))*
-                    "(.+?)<br>\\s*" + 											//title
-                    "<b>\\s*Primary Law:\\s*</b>(.+?)<br>\\s*" + 						//primary law
-                    "(?:<b>SUMM \\: </b>)?(BILL SUMMARY NOT FOUND|.+?)<br>\\s*" + 	//summary
-            "(?:(Criminal Sanction Impact.)(?: <br>))?"); 				//criminal sanction impact
+            "<a .+?>(.+?)</a>" + 										
+                    "(.+?)<br>\\s*" + 											
+                    "(.+?)<br>\\s*" + 											
+                    "<b>\\s*Primary Law:\\s*</b>(.+?)<br>\\s*" + 						
+                    "(?:<b>SUMM \\: </b>)?(BILL SUMMARY NOT FOUND|.+?)<br>\\s*" + 	
+            "(?:(Criminal Sanction Impact.)(?: <br>))?"); 				
     Pattern actionP = Pattern.compile("(<b>(?:&nbsp;)+</b>)?+(\\d{2}/\\d{2}/\\d{2}) (.+?)<br>");
     Pattern sponsorP = Pattern.compile("([\\w\\- ']+?)(?: CO\\: (.+))");
 

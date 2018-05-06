@@ -35,7 +35,15 @@ import org.apache.commons.lang3.text.StrSubstitutor;
  */
 @SuppressWarnings("serial")
 
-/** Comments about this class */
+// Richiede commento
+
+/**
+ * PJDCC - Summary for class responsabilities.
+ *
+ * @author 
+ * @since 
+ * @version 
+ */
 public class WebServlet extends HttpServlet implements OpenLegConstants {
 
     public static final int SINGLE_FORMAT = 1;
