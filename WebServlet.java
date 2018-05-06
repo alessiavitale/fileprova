@@ -30,11 +30,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.apache.commons.lang3.text.StrSubstitutor;
 
-/*
- * a cleaner and [hopefully] more intelligent catch all for generated views
- */
-@SuppressWarnings("serial")
-
 // Richiede commento
 
 /**
@@ -44,6 +39,8 @@ import org.apache.commons.lang3.text.StrSubstitutor;
  * @since 
  * @version 
  */
+@SuppressWarnings("serial")
+
 public class WebServlet extends HttpServlet implements OpenLegConstants {
 
     public static final int SINGLE_FORMAT = 1;
