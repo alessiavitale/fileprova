@@ -197,6 +197,8 @@ public class ApiHelper implements OpenLegConstants {
     
     private Result editResult(BaseObject resultObj, String type,Result result ){
         
+        synchronized (dateFormat) {
+        
         String title = "";
         String summary = "";
 
@@ -252,7 +254,7 @@ public class ApiHelper implements OpenLegConstants {
 
             title = billEvent.getText();
 
-            fields.put("date", DATE_FORMAT_MED.format(billEvent
+            fields.put("date", dateFormat.format(billEvent
                     .getDate()));
             fields.put("billno", billId);
         } else if (type.equals("vote")) {
@@ -277,7 +279,7 @@ public class ApiHelper implements OpenLegConstants {
         
         
         return result;
-    }
+    } }
 
     public static String dateReplace(String term) {
         Pattern  p = Pattern.compile("(\\d{1,2}[-]?){2}(\\d{2,4})T\\d{2}-\\d{2}");
