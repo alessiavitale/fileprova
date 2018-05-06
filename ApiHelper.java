@@ -105,8 +105,10 @@ public class ApiHelper implements OpenLegConstants {
     
     private String suppCase(String summary, HashMap<String, String> fields, Supplemental supp){
         
+        synchronized(dateFormat) {
+            
         if (supp.getCalendarDate() != null) {
-        fields.put("date", DATE_FORMAT_CUSTOM.format(supp.getCalendarDate()));
+        fields.put("date", dateFormat.format(supp.getCalendarDate()));
 
         summary = "";
 
@@ -122,7 +124,7 @@ public class ApiHelper implements OpenLegConstants {
         }
     } else if (supp.getSequences() != null && supp.getSequences().size() > 0) {
 
-        fields.put("date", DATE_FORMAT_CUSTOM.format(supp.getSequences().get(0).getActCalDate()));
+        fields.put("date", dateFormat.format(supp.getSequences().get(0).getActCalDate()));
 
         int total = 0;
         for(Sequence seq:supp.getSequences()) {
@@ -133,7 +135,7 @@ public class ApiHelper implements OpenLegConstants {
     }
         
         return summary;
-    }
+    }}
     
     public static ArrayList<Result> buildSearchResultList(SenateResponse sr) {
 
