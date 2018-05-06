@@ -36,24 +36,23 @@ public class UpdatesServlet extends HttpServlet
 
     private static class ChangeHandler implements ResultSetHandler<ArrayList<Change>> {
 
-        @Override
-        public ArrayList<Change> handle(ResultSet results) throws SQLException
-        {
-            ArrayList<Change> changes = new ArrayList<Change>();
-            while(results.next()) {
-                    try {
-                        changes.add(new Change(results.getString("oid"), results.getString("otype"),
+		@Override
+		public ArrayList<Change> handle(ResultSet results) throws SQLException {
+			synchronized (mysqlDateFormat) {
+			ArrayList<Change> changes = new ArrayList<Change>();
+			while (results.next()) {
+				try {
+					changes.add(new Change(results.getString("oid"), results.getString("otype"),
 							Storage.Status.valueOf(results.getString("status")),
 							mysqlDateFormat.parse(results.getString("time"))));
-                        ;
-                    }
-                    catch (ParseException e) {
-                        logger.error("Invalid change.time format", e);
-                    }
-            }
-            return changes;
-        }
-    }
+				} catch (ParseException e) {
+					logger.error("Invalid change.time format", e);
+				}
+			}
+			return changes;
+			}
+		}
+	}
 
     private static final Logger logger = Logger.getLogger(UpdatesServlet.class);
 
