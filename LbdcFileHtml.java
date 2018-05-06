@@ -19,14 +19,6 @@ import java.util.Collection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@AssociatedFields({	FieldName.SPONSOR,
-    FieldName.COSPONSORS,
-    FieldName.ACTIONS,
-    FieldName.TITLE,
-    FieldName.SUMMARY,
-    FieldName.LAW_SECTION })
-
-
 /**
  * PJDCC - Summary for class responsabilities.
  *
@@ -34,6 +26,14 @@ import java.util.regex.Pattern;
  * @since 
  * @version 
  */
+
+@AssociatedFields({	FieldName.SPONSOR,
+    FieldName.COSPONSORS,
+    FieldName.ACTIONS,
+    FieldName.TITLE,
+    FieldName.SUMMARY,
+    FieldName.LAW_SECTION })
+
 public class LbdcFileHtml extends LbdcFile {
     Pattern billP = Pattern.compile(
             "<a .+?>(.+?)</a>" + 										
