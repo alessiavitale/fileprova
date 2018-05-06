@@ -3,6 +3,15 @@ package gov.nysenate.openleg.model;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+// Richiede commento
+
+/**
+ * PJDCC - Summary for class responsabilities.
+ *
+ * @author 
+ * @since 
+ * @version 
+ */
 public class SenateResponse {
 
     HashMap<String, Object> metadata;
