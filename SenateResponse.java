@@ -14,10 +14,12 @@ import java.util.HashMap;
  */
 public class SenateResponse {
 
+  
     HashMap<String, Object> metadata;
 
     ArrayList<Result> results;
 
+    /** Comments about this class */
     public SenateResponse() {
         this.metadata = new HashMap<String,Object>();
         this.results = new ArrayList<Result>();
