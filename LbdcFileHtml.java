@@ -26,7 +26,6 @@ import java.util.regex.Pattern;
     FieldName.SUMMARY,
     FieldName.LAW_SECTION })
 
-// Richiede commento
 
 /**
  * PJDCC - Summary for class responsabilities.
