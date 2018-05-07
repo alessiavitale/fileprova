@@ -84,7 +84,11 @@ public class StorageJsonConverter
      * @throws java.io.IOException */
     public void write(Transcript value, File storageFile) throws IOException
     {
+        try {
         write(value, new FileOutputStream(storageFile));
+        
+        }
+        catch(Exception e){}
         
         finally {
         try{
@@ -101,11 +105,7 @@ public class StorageJsonConverter
     public void write(Bill value, File storageFile) throws IOException
     {
         write(value, new FileOutputStream(storageFile));
-        finally {
-        try{
-         value.close();
-         }catch(Exception e){}
-    }
+     
     }
     }
 /** Comments about this class
