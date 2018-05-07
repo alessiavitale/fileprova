@@ -257,7 +257,7 @@ public class ReportReader extends CouchSupport {
 
             finally {
            if (filePath != null) {
-             
+            filePath.close (); // OK
          catch (IOException e) {
             System.err.println("Could not write to file " + filePath);
             logger.error(e);
