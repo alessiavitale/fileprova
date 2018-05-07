@@ -80,14 +80,16 @@ public class StorageJsonConverter
 /** Comments about this class */
     public void write(Transcript value, File storageFile) throws IOException
     {
+        FileOutputStream outF = null ;
        try {
-    		write(value, new FileOutputStream(storageFile));
+    		write(value, outF));
     	} catch (IOException e) {
     		System.out.println("Exception IO");
     	}
        finally{
        try{
          value.close();
+         outF.close
          }catch(Exception e){}
             System.out.println("Exception IO");
     }
@@ -95,14 +97,17 @@ public class StorageJsonConverter
 /** Comments about this class */
     public void write(Bill value, File storageFile) throws IOException
     {
+        FileOutputStream outF = null ;
+        
         try {
-    		write(value, new FileOutputStream(storageFile));
+    		write(value, outF));
     	} catch (IOException e) {
     		System.out.println("Exception IO");
     	}
         finally{
         try{
          value.close();
+         outF.close/();
          }catch(Exception e){}
             System.out.println("Exception IO");
         }
@@ -110,29 +115,39 @@ public class StorageJsonConverter
 /** Comments about this class */
     public void write(Agenda value, File storageFile) throws IOException
     {
+        FileOutputStream outF = null ;
         try {
-			write(value, new FileOutputStream(storageFile));
+            
+             outF = new FileOutputStream(storageFile);
+             
+			write(value, outF));
 		} catch (IOException e) {
 		System.out.println("Exception IO");
 		}
         finally{
         try{
-         value.close();
+         value.close
+         outF.close();
          }catch(Exception e){}
             System.out.println("Exception IO");
         }
     }
+    
 /** Comments about this class */
     public void write(Meeting value, File storageFile) throws IOException
     {
+        FileOutputStream outF = null ; 
+        
         try {
-    		write(value, new FileOutputStream(storageFile));
+                outF = new FileOutputStream(storageFile);
+    		write(value, outF);
 	} catch (IOException e) {
 		System.out.println("Exception IO");
 	}
         finally{
         try{
          value.close();
+         outF.close();
          }catch(Exception e){}
             System.out.println("Exception IO");
         }
