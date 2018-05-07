@@ -219,9 +219,11 @@ public class ReportReader extends CouchSupport {
     public void dumpToFile(String filePath) {
         if(filePath == null)
             throw new Error();
+        
+        BufferedWriter bw = null;
 
         try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(new File(filePath)));
+             bw = new BufferedWriter(new FileWriter(new File(filePath)));
 
             List<ProblemBill> problemBills = pbr.getAll();
             StringBuffer missing;
@@ -259,8 +261,9 @@ public class ReportReader extends CouchSupport {
         } catch (IOException e) {
             System.err.println("Could not write to file " + filePath);
             logger.error(e);
-        }
-        finally { 
-        
+        } finally {
+         try{
+         bw.close();
+         }catch(Exception e){}
     }
 }}
