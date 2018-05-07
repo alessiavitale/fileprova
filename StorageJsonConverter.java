@@ -86,7 +86,14 @@ public class StorageJsonConverter
     {
         write(value, new FileOutputStream(storageFile));
         
+        finally {
+        try{
+         value.close();
+         }catch(Exception e){}
     }
+    }
+        
+    
 /** Comments about this class
      * @param value
      * @param storageFile
@@ -94,6 +101,12 @@ public class StorageJsonConverter
     public void write(Bill value, File storageFile) throws IOException
     {
         write(value, new FileOutputStream(storageFile));
+        finally {
+        try{
+         value.close();
+         }catch(Exception e){}
+    }
+    }
     }
 /** Comments about this class
      * @param value
