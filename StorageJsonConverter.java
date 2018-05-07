@@ -85,6 +85,7 @@ public class StorageJsonConverter
     	} catch (IOException e) {
     		System.out.println("Exception IO");
     	}
+       finnally{
        try{
          value.close();
          }catch(Exception e){}
@@ -97,6 +98,7 @@ public class StorageJsonConverter
     	} catch (IOException e) {
     		System.out.println("Exception IO");
     	}
+        finally{
         try{
          value.close();
          }catch(Exception e){}
