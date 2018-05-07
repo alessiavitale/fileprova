@@ -86,10 +86,8 @@ public class StorageJsonConverter
     {
         try {
         write(value, new FileOutputStream(storageFile));
-        
         }
         catch(Exception e){}
-        
         finally {
         try{
          value.close();
