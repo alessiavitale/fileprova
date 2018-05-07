@@ -97,6 +97,7 @@ public class Person {
     }
     public int hashCode() {
         return value;
+    }}
 /** Comments about this class */
     @Override
     public String toString() {
