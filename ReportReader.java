@@ -265,3 +265,4 @@ public class ReportReader extends CouchSupport {
     }
 }
         }
+        
