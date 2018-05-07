@@ -89,6 +89,8 @@ public class StorageJsonConverter
        try{
          value.close();
          }catch(Exception e){}
+            System.out.println("Exception IO");
+    }
     }
 /** Comments about this class */
     public void write(Bill value, File storageFile) throws IOException
@@ -102,6 +104,8 @@ public class StorageJsonConverter
         try{
          value.close();
          }catch(Exception e){}
+            System.out.println("Exception IO");
+        }
     }
 /** Comments about this class */
     public void write(Agenda value, File storageFile) throws IOException
