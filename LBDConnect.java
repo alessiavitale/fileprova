@@ -207,30 +207,29 @@ public class LBDConnect {
        
     }
     /** Comments about this class */
+    @SuppressWarnings("empty-statement")
     public Bill getBillFromLbdc(String billNumber, String year) {
         Bill bill = new Bill();
         File file = new File(TEMP_FILE_NAME);
         try {
             writeDataFromLbdc(constructUrlBill(billNumber, year));
 
-            BufferedReader br = new BufferedReader(new FileReader(file));
-
+            Informations info;
             //skip past http header
-            while(!br.readLine().equals("Content-type: text/html"));
-            br.readLine();
-
-            String in = null;
-
-            Informations info  = new Informations();
-
-            while((in = br.readLine()) != null) {
-                
-                info = controlIn(in, info);
-                
-                info = controlInfo(in, info);
-                
+            try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+                //skip past http header
+                while(!br.readLine().equals("Content-type: text/html"));
+                br.readLine();
+                String in = null;
+                info = new Informations();
+                while((in = br.readLine()) != null) {
+                    
+                    info = controlIn(in, info);
+                    
+                    info = controlInfo(in, info);
+                    
+                }
             }
-            br.close();
 
             bill.setSenateBillNo(bill + "-" + year);
 
@@ -243,7 +242,7 @@ public class LBDConnect {
         }
         finally {
          try{
-         br.close();
+         bill.close();
          }catch(Exception e){}
             System.out.println("Exception IO");
         }
