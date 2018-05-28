@@ -36,7 +36,9 @@ public class LogFilter implements Filter
             String pathInfo = ((HttpServletRequest)request).getPathInfo();
             String queryString = ((HttpServletRequest)request).getQueryString();
 
-            String request = request.getParameter();
+            String uri = uri.getParameter();
+            String pathInfo  = pathInfo.getParameter();
+            String ueryString = ueryString.getParameter();
             
             if (pathInfo != null) {
                 uri += pathInfo;
