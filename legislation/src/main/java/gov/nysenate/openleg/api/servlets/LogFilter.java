@@ -36,6 +36,8 @@ public class LogFilter implements Filter
             String pathInfo = ((HttpServletRequest)request).getPathInfo();
             String queryString = ((HttpServletRequest)request).getQueryString();
 
+            String request = request.getParameter();
+            
             if (pathInfo != null) {
                 uri += pathInfo;
             }
@@ -59,6 +61,17 @@ public class LogFilter implements Filter
             throw e;
         }
     }
+    public static String neutralizeMessage(String message) {
+  // ensure no CRLF injection into logs for forging records
+  String clean = message.replace( '\n', '_' ).replace( '\r', '_' );
+  if ( ESAPI.securityConfiguration().getLogEncodingRequired() ) {
+      clean = ESAPI.encoder().encodeForHTML(clean);
+      if (!message.equals(clean)) {
+          clean += " (Encoded)";
+      }
+  }
+  return clean;
+}
 
 /** Comments about this class */
     public void destroy()

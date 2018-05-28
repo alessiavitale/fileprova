@@ -354,7 +354,7 @@ public class WebServlet extends HttpServlet implements OpenLegConstants {
                     m.group(KEY_VALUE_PAGE_NUMBER),
                     m.group(KEY_VALUE_PAGE_SIZE));
             
-            String doGet = request.getParameter();
+            String request = request.getParameter();
         }
 
         if(controlM(SEARCH_PATTERN, apiRequest, m, uri)) {
