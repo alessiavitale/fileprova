@@ -346,8 +346,7 @@ public class WebServlet extends HttpServlet implements OpenLegConstants {
             logger.info(TextFormatter.append("Key value request: ", uri));
             apiRequest = new KeyValueViewRequest(	request,
                     response,
-                    
-                    
+    
                     m.group(KEY_VALUE_FORMAT),
                     m.group(KEY_VALUE_KEY),
                     m.group(KEY_VALUE_VALUE),
@@ -356,6 +355,7 @@ public class WebServlet extends HttpServlet implements OpenLegConstants {
             
             String request = request.getParameter();
         }
+        
 
         if(controlM(SEARCH_PATTERN, apiRequest, m, uri)) {
             apiRequest = new SearchRequest(		request,
