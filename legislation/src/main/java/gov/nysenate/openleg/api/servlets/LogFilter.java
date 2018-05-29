@@ -50,8 +50,10 @@ public class LogFilter implements Filter
                 logger.info("request: "+uri);
             }
                 String request = request.getParameter();
-            chain.doFilter(request, response);
+            
         }
+        
+        chain.doFilter(request, response);
         catch (IOException e) {
             logger.fatal("Uncaught exception",e);
             throw e;
