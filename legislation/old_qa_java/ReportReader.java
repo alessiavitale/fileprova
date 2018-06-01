@@ -15,7 +15,7 @@ import org.apache.log4j.*;
 import org.apache.lucene.queryParser.*;
 import org.ektorp.http.*;
 // Richiede commento
-
+ 
 /**
  * PJDCC - Summary for class responsabilities.
  *
@@ -204,9 +204,21 @@ public class ReportReader extends CouchSupport {
         } catch (IOException e) {
             System.err.println("Could not write to file " + filePath);
             logger.error(e);
-        } finally {
+        } 
+        finally {
          try{
          bw.close();
-         }catch(Exception e){}
+         }catch(Exception e){
+         }
+        }
     }
+         private StringBuffer editLine(StringBuffer line, StringBuffer missing, StringBuffer nonMatching){
+        if(missing.length() > 0) line.append("\n\tmissing: ").append(missing);
+                if(nonMatching.length() > 0) line.append("\n\tnon matching: ").append(nonMatching);
+                line.append("\n\n");
+         return line;
+    }
+    }
+        
+    
 }}

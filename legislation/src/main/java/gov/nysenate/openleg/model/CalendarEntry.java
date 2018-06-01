@@ -10,7 +10,7 @@ import java.util.Date;
  *
  * @author 
  * @since 
- * @version 
+ * @version  
  */
 public class CalendarEntry
 {
@@ -225,12 +225,17 @@ public class CalendarEntry
         this.no = no;
     }
 
-    @Override
     
-        /**
-       * Comments about this field
-       */
+    
+       /**
+        * valore intero
+        */
         public int value;
+    /**
+     * 
+     * @param o
+     * @return 
+     */
         public boolean equals (Object o) {
           if (o instanceof CalendarEntry){  
              return true; }

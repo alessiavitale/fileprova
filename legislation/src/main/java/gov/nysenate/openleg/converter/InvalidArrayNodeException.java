@@ -9,6 +9,7 @@ import java.lang.Exception;
  *
  * @author BiagioDipalma
  */
+
 public class InvalidArrayNodeException extends Exception{
     InvalidArrayNodeException(String msg){
         super(msg);

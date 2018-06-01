@@ -13,7 +13,7 @@ import java.util.*;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 
-import com.google.gson.JsonArray;
+import com.google.gson.JsonArray; 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 
@@ -99,10 +99,11 @@ public class LuceneJsonConverter
      */
     private static JsonObject converter(Object o, List<String> exclude) throws Exception
     {
-        List<Field> fields = new ArrayList<Field>();
+        
+        ArrayList<myField> fields = new ArrayList<>();
         Class<?> cls = o.getClass();
         while (cls != null) {
-            fields.addAll(Arrays.asList(cls.getDeclaredFields()));
+            fields.addAll(new myField(Arrays.asList(cls.getDeclaredFields().toString())));
             cls = cls.getSuperclass();
         }
 
@@ -110,26 +111,26 @@ public class LuceneJsonConverter
         if(exclude == null) {
             exclude = new ArrayList<String>();
         }
-
-        for(Field f:fields) {
-            if(controlField(f)) {
-                String name = StringUtils.capitalize(f.getName());
-                String type = f.getType().getSimpleName();
-                Field value = String.class.getDeclaredField("value");
-                if(!exclude.contains(f.getName())) {
+        int  counter = 0;
+        for(counter = 0; counter < fields.size(); counter++) {
+            if(controlF(fields.get(counter))) {
+                String name = StringUtils.capitalize(fields.get(counter).getName());
+                String type = fields.get(counter).getName();
+                myField value = new myField(String.class.getDeclaredField("value").getName());
+                if(!exclude.contains(fields.get(counter).getName())) {
                 value.setAccessible(false);
-                Object obj = f.get(o);
-                f.setAccessible(false);
+                Object obj = fields.get(counter).property;
+                fields.get(counter).setAccessible(false);
 
                 if(obj == null) {
-                    root.add(f.getName(), null);
+                    root.add(fields.get(counter).getName(), null);
                 }
                 else {
                     if(isPrimitive(obj)) {
-                        root.addProperty(f.getName(), obj.toString());
+                        root.addProperty(fields.get(counter).getName(), obj.toString());
                     }
                     else{
-                        root = workOnRoot(root,obj,type,f,o,name);
+                        root = workOnRoot(root,obj,type,fields.get(counter),o,name);
                     }
                 }
                 }
@@ -137,15 +138,18 @@ public class LuceneJsonConverter
         }
          return root;
     }
+    
     /** Comments about this class */
-    private static boolean controlField(Field f){
+    private static boolean controlF(myField f){
         boolean flag= false;
-        if(!f.getName().contains("jdo") && !Modifier.isStatic(f.getModifiers())){
+        if(!f.getName().contains("jdo") && !Modifier.isStatic((int)f.getState())){
             flag = true;
         }
         
         return flag;
     }
+    
+    
     /** Comments about this class */
     private void editCache(Bill bill, Object obj)throws Exception{
        if(!cachedSimpleBills.containsKey(bill.getBillId())) {
@@ -153,7 +157,7 @@ public class LuceneJsonConverter
         } 
     }
     /** Comments about this class */
-    private static JsonObject workOnRoot(JsonObject root, Object obj, String type, Field f, Object o, String name){
+    private static JsonObject workOnRoot(JsonObject root, Object obj, String type, myField f, Object o, String name){
         
         try{
         if(type.equals("Bill")) {
@@ -255,5 +259,41 @@ public class LuceneJsonConverter
     private static List<String> transcript_exclude()
     {
         return Arrays.asList("relatedBills", "transcriptTextProcessed");
+    }
+}
+
+class myField{
+   
+    String name;
+    boolean accessible;
+    Object property;
+    
+    myField(String name, boolean accessible, Object property){
+        this.name = name;
+        this.accessible = accessible;
+        this.property = property;
+    }
+    
+    myField(String name){
+        this.name = name;
+    }
+    
+    String getName(){
+        String str = this.name;
+        return str;
+    }
+    
+    int getState(){
+        boolean flag = this.accessible;
+        if(flag){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+  
+    
+    void setAccessible(boolean flag){
+        this.accessible = flag;
     }
 }

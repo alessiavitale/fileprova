@@ -11,7 +11,7 @@ import java.util.*;
 public class Change implements Comparable<Object>
 {
     /**
-     * The type of the object that was changed.
+     * The type of the object that was changed. 
      */
     private String otype;
 

@@ -9,7 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- *
+ * 
  * @author GraylinKim
  */
 public class Bill extends BaseObject implements Comparable<Bill>
@@ -604,13 +604,18 @@ public class Bill extends BaseObject implements Comparable<Bill>
         votes.remove(vote);
     }
 
-    @Override
+    
    
    
        /**
-       * Comments about this field
-       */
+        * valore intero
+        */
        public int value;
+    /**
+     * 
+     * @param o
+     * @return 
+     */
         public boolean equals (Object o) {
           if (o instanceof Bill){ 
              return true; }

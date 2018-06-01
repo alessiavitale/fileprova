@@ -7,7 +7,7 @@ import gov.nysenate.openleg.qa.model.LbdcFile.AssociatedFields;
 import gov.nysenate.openleg.qa.model.NonMatchingField;
 import gov.nysenate.openleg.qa.model.ProblemBill;
 import gov.nysenate.openleg.search.SearchEngine;
-
+ 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.regex.MatchResult;
@@ -90,7 +90,7 @@ public class LbdcFilePaging extends LbdcFile {
         Bill luceneBill = SearchEngine.getInstance().getBill(formattedBillNo);
 
         if(luceneBill == null) {
-            //TODO we don't have it
+           System.out.println("niente");
         }
         else {
             if(luceneBill.getFulltext() != null) {

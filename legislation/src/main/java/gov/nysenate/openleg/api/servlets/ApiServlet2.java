@@ -166,7 +166,7 @@ public class ApiServlet2 extends HttpServlet
             }
             else if (format.equals("jsonp")) {
                 String callback = request.getParameter("callback");
-                if (callback != null && callback != "") {
+                if (callback != null && !callback.equals("")) {
                     PrintWriter out = response.getWriter();
                     response.setContentType("application/javascript");
                     out.write(callback+"("+new Api2JsonConverter().toString(sr)+");");

@@ -12,7 +12,7 @@ import gov.nysenate.openleg.model.Section;
 import gov.nysenate.openleg.model.SenateResponse;
 import gov.nysenate.openleg.model.Sequence;
 import gov.nysenate.openleg.model.Supplemental;
-import gov.nysenate.openleg.model.Transcript;
+import gov.nysenate.openleg.model.Transcript; 
 import gov.nysenate.openleg.model.Vote;
 import gov.nysenate.openleg.api.servlets.converter.InvalidArrayNodeException;
 import gov.nysenate.openleg.api.servlets.converter.InvalidBaseObjException;
@@ -123,7 +123,7 @@ public class Api1JsonConverter
                 node.put("location", result.getFields().get("location"));
             }
             else if (result.getOtype().equals("calendar")) {
-                // No special fields.
+               System.out.println("No special fields."); 
             }
             array.add(node);
         }

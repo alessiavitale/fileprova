@@ -6,7 +6,7 @@ import gov.nysenate.openleg.model.*;
 import gov.nysenate.openleg.util.*; 
 
 
-import java.io.BufferedReader;
+import java.io.BufferedReader;  
 import java.io.File; 
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -290,27 +290,20 @@ public class LBDConnect {
         Action be = new Action();
         
         try{
-        for(int i = 7; i < strings.length;) {
+        for(int i = 7; i < strings.length;i++) {
             if(strings[i].matches("\\d{2}/\\d{2}/\\d{2}")) {
-                
-                
 
                     be.setDate(sdf.parse(strings[i]));
-                    i++;
                     be.setText(strings[i]);
 
                     bill.addAction(be);
-                } 
-                i++;
+                }
             }
             else {
                 if(strings[i].charAt(0) == sameAsBillNo.charAt(0)) {
-                    i += 2;
                     boolean d= strings[i].matches("\\d{2}/\\d{2}/\\d{2}");
                     while(d) {
-                        i += 2;
                     }
-                    i += 2;
                 }
                 else {
                     break;

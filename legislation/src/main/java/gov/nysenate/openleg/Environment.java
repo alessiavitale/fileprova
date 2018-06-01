@@ -11,10 +11,10 @@ import gov.nysenate.openleg.util.Timer;
 import gov.nysenate.util.Config;
 
 import java.io.BufferedReader;
-import java.io.File;
+import java.io.File; 
 import java.io.IOException; 
 import java.io.StringReader;
-import java.util.Arrays;
+import java.util.Arrays; 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -187,7 +187,7 @@ public class Environment
             int partsCounter = 1;
 
             if (file.getName().equalsIgnoreCase("CMS.TEXT")) {
-                // This is the RULES file, we don't do anything with it yet
+                System.out.println("niente");
             }
             else if (!file.getName().startsWith("SOBI")) {
                 logger.info("Moving transcript: "+file);
@@ -300,7 +300,7 @@ public class Environment
             agendaProcessor.process(file, storage);
         }
         else if (type.equals("annotations")) {
-            //do nothing.
+            System.out.println("niente");
         }
         else if (type.equals("transcripts")) {
             transcriptProcessor.process(file, storage);

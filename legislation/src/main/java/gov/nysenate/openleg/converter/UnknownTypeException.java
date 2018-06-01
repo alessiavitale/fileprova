@@ -9,6 +9,7 @@ import java.lang.Exception;
  *
  * @author BiagioDipalma
  */
+
 public class UnknownTypeException extends Exception{
     UnknownTypeException(String msg){
         super(msg);

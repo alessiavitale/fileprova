@@ -115,6 +115,7 @@ public class TranscriptPageParser
     /**
      * Fixes a variety of formatting errors that occur on the first page of original documents.
      */
+    
     private void fixErrorsOnFirstPage(List<List<String>> pages) {
         List<String> correctedFirstPage = new ArrayList<String>();
         List<String> firstPage = pages.get(0);
@@ -132,8 +133,7 @@ public class TranscriptPageParser
                     nextLine = getNextLine(firstPage, i);
                     if (nextLine.fullText().trim().equals("President") || nextLine.fullText().trim().equals("Acting President")) {
                         line.setLine(line.fullText() + " " + nextLine.fullText().trim());
-                        // Skip next line since we combined it with the previous line.
-                        i++;
+
                     }
                 }
 

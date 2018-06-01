@@ -12,7 +12,7 @@ import java.util.List;
 public class Calendar extends BaseObject
 {
     /**
-     * The calendar year for the calendar.
+     * The calendar year for the calendar. 
      */
     protected int year;
 
@@ -203,12 +203,20 @@ public class Calendar extends BaseObject
         return this.getNo()+" - "+this.getType()+" - "+DateFormat.getDateInstance(DateFormat.MEDIUM).format(this.getDate());
     }
 
-    @Override
+    /**
+     *
+     */
+   
      
         /**
-       * Comments about this field
-       */
+         * value intero
+         */
         public int value;
+    /**
+     * 
+     * @param o
+     * @return 
+     */
         public boolean equals (Object o) {
           if (o instanceof Calendar)  { 
              return true; }

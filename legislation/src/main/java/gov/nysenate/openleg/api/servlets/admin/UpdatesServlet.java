@@ -6,11 +6,11 @@
 import gov.nysenate.openleg.util.*;
 
 
-import java.io.IOException;
+import java.io.IOException; 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.*;
- 
+import java.text.*; 
+  
 import java.util.*;
 
 
@@ -94,6 +94,7 @@ public class UpdatesServlet extends HttpServlet
         else {
             return value;
         }
+         String request = request.getParameter();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
@@ -122,7 +123,7 @@ public class UpdatesServlet extends HttpServlet
 
             otype = otype.toLowerCase();
             if (!otypes.contains(otype)) {
-                // Alert user to malformed type field
+                System.out.println("Alert user to malformed type field");
             }
 
             List<Change> changes = getHistory(startDate, endDate, otype, oid);
@@ -173,6 +174,8 @@ public class UpdatesServlet extends HttpServlet
             synchronized (dateFormat) {
             query += " AND time <= ?";
             params.add(mysqlDateFormat.format(end));
+            
+         
         }}
 
         if (otype != null && !otype.isEmpty()) {
@@ -188,8 +191,24 @@ public class UpdatesServlet extends HttpServlet
         query += " ORDER BY time desc LIMIT "+QUERY_LIMIT;
         logger.info(query);
         logger.info(params);
+        
+        
+        
         return runner.query(query, handler, params.toArray());
     }
+    
+    public static String neutralizeMessage(String message) {
+  // ensure no CRLF injection into logs for forging records
+  String clean = message.replace( '\n', '_' ).replace( '\r', '_' );
+  if ( ESAPI.securityConfiguration().getLogEncodingRequired() ) {
+      clean = ESAPI.encoder().encodeForHTML(clean);
+      if (!message.equals(clean)) {
+          clean += " (Encoded)";
+      }
+  }
+  return clean;
+}
+    
 
     private TreeMap<Date, TreeMap<Date, ArrayList<Change>>> structureChanges(List<Change> changes) {
         Calendar cal = Calendar.getInstance();

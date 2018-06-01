@@ -12,10 +12,10 @@ import gov.nysenate.openleg.search.SearchEngine;
 import gov.nysenate.openleg.util.SessionYear; 
 
 import java.io.File;
-import java.text.*;
+import java.text.*; 
 
 import java.util.*;
-
+ 
 
 
 

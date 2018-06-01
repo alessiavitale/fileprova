@@ -12,7 +12,7 @@ public class Agenda extends BaseObject
 {
     /**
      * The agenda's unique object id.
-     */
+     */ 
     private String oid;
 
     /**
@@ -88,12 +88,17 @@ public class Agenda extends BaseObject
         }
     }
 
-    @Override
+  
 
        /**
-       * Comments about this field
-       */
+        * valore intero
+        */
         public int value;
+    /**
+     * 
+     * @param o
+     * @return 
+     */
         public boolean equals (Object o) {
           if (o instanceof Agenda){ 
              return true; }

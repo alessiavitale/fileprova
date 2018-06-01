@@ -32,10 +32,9 @@ public class LogFilter implements Filter
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException
     {
         try {
-            String uri = ((HttpServletRequest)request).getServletPath();
-            String pathInfo = ((HttpServletRequest)request).getPathInfo();
-            String queryString = ((HttpServletRequest)request).getQueryString();
-
+            String uri = neutralizeMessage(((HttpServletRequest)request).getServletPath());
+            String pathInfo = neutralizeMessage(((HttpServletRequest)request).getPathInfo());
+            String queryString = neutralizeMessage(((HttpServletRequest)request).getQueryString());
             
             
             if (pathInfo != null) {
@@ -48,13 +47,11 @@ public class LogFilter implements Filter
 
             if (!uri.contains("/static/")) {
                 logger.info("request: "+uri);
+                
             }
-                String request = request.getParameter();
             
-        }
-        
-        chain.doFilter(request, response);
-        catch (IOException e) {
+
+        } catch (IOException e) {
             logger.fatal("Uncaught exception",e);
             throw e;
         }
@@ -62,20 +59,11 @@ public class LogFilter implements Filter
             logger.fatal("Uncaught exception",e);
             throw e;
         }
+  
+        
     }
     
-    public static String neutralizeMessage(String message) {
-  // ensure no CRLF injection into logs for forging records
-  String clean = message.replace( '\n', '_' ).replace( '\r', '_' );
-  if ( ESAPI.securityConfiguration().getLogEncodingRequired() ) {
-      clean = ESAPI.encoder().encodeForHTML(clean);
-      if (!message.equals(clean)) {
-          clean += " (Encoded)";
-      }
-  }
-  return clean;
-}
-    public static String neutralizeMessage(String message) {
+ public static String neutralizeMessage(String message) {
   // ensure no CRLF injection into logs for forging records
   String clean = message.replace( '\n', '_' ).replace( '\r', '_' );
   if ( ESAPI.securityConfiguration().getLogEncodingRequired() ) {
@@ -88,8 +76,11 @@ public class LogFilter implements Filter
 }
 
 /** Comments about this class */
-    public void destroy()
-    {
+    public void destroy() {
 
     }
+    
+  
 }
+
+
