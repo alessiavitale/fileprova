@@ -2,7 +2,7 @@ package gov.nysenate.openleg.util;
 
 import gov.nysenate.openleg.qa.LBDConnect;
 import gov.nysenate.services.model.Committee;
-import gov.nysenate.services.model.Member;
+import gov.nysenate.services.model.Member; 
 
 import java.io.File;
 import java.io.IOException;
@@ -77,8 +77,9 @@ public class CommitteeWriter {
      * @param apiKey services APIKey
      * @param filePath
      * @param mapper
+     * @param req
      */
-    public  void writeCommitteeJson(String apiKey, String filePath, ObjectMapper mapper ,HttpServletRequest req ) {
+    public  void writeCommitteeJson(String apiKey, ObjectMapper mapper  ) {
         
         writeCommitteeJson(apiKey, new File(req.getParameter("file")).getName(), mapper);
     }
@@ -124,7 +125,8 @@ public class CommitteeWriter {
 //        SenateServicesFactory factory = new SenateServicesFactory();
 //        SenateServicesDAO dao = factory.createSenateServicesDAO(apiKey);
 //        return dao.getCommittees();
-        return null;
+        apiKey = null;
+        return apiKey;
     }
 /** Comments about this class */
     public ArrayList<String> getCommitteeNamesFromLbdc() {

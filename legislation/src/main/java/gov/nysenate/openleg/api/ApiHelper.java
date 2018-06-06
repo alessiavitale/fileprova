@@ -6,7 +6,7 @@ import gov.nysenate.openleg.model.*;
 import gov.nysenate.openleg.util.*;
 
 
-import java.text.*; 
+import java.text.*;  
 import java.util.*;
 
 import java.time.*; 
@@ -54,7 +54,7 @@ public class ApiHelper implements OpenLegConstants {
         return flag;
     }
     /** Comments about this class */
-    private String editTitle(String type, String title, Bill bill){
+    private String editTitle( String title, Bill bill){
 
         if (bill.getTitle() != null)
             title += bill.getTitle();
