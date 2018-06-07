@@ -50,6 +50,6 @@ public class SenateResponse {
     }
 /** Comments about this class */
     public Object getMetadataByKey(String key) {
-        return this.metadata.get(key);
+        return (String)this.metadata.get(key);
     }
 }
