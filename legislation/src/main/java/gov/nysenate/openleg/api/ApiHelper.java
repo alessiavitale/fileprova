@@ -261,7 +261,15 @@ public class ApiHelper implements OpenLegConstants {
             fields.put("date", dateFormat.format(billEvent
                     .getDate()));
             fields.put("billno", billId);
-        } else if (type.equals("vote")) {
+            
+            else if ((type.equals("vote")) &&(vote.getVoteType() == Vote.VOTE_TYPE_COMMITTEE)){
+                     fields.put("committee", vote.getDescription());
+
+            title +=  DATE_FORMAT_CUSTOM.format(vote.getVoteDate());
+        }
+                    
+            
+        } else  (type.equals("vote")) {
             Vote vote = (Vote) resultObj;
 
             fields = editVote(fields, vote);
@@ -271,11 +279,8 @@ public class ApiHelper implements OpenLegConstants {
             fields.put("billno", resultFields.get("billno"));
             fields.put("othersponsors", resultFields.get("othersponsors"));
 
-            if (vote.getVoteType() == Vote.VOTE_TYPE_COMMITTEE)
-                fields.put("committee", vote.getDescription());
-
-            title +=  DATE_FORMAT_CUSTOM.format(vote.getVoteDate());
-        }
+           
+               
 
         result.setTitle(title);
         result.setSummary(summary);

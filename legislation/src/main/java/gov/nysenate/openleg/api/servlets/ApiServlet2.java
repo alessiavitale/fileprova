@@ -212,7 +212,7 @@ public class ApiServlet2 extends HttpServlet
                 throw new ApiRequestException("No matching document could be found.");
                 }
             
-            else if (format.equals("pdf")) {
+            else (format.equals("pdf")) {
                 
    
                 response.setContentType("application/pdf");
