@@ -271,7 +271,6 @@ public class ApiHelper implements OpenLegConstants {
             
         } else  (type.equals("vote")) {
             Vote vote = (Vote) resultObj;
-
             fields = editVote(fields, vote);
 
             HashMap<String, String> resultFields = result.getFields();
