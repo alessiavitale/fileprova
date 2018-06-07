@@ -206,11 +206,15 @@ public class ApiServlet2 extends HttpServlet
                 response.setContentType("application/xml");
                 new Api2XmlConverter().write(sr, response.getOutputStream());
             }
-            else if (format.equals("pdf")) {
-                if (sr.getResults().size() == 0) {
-                    throw new ApiRequestException("No matching document could be found.");
+            
+            else if ((format.equals("pdf")) && (sr.getResults().size() == 0)) { {
+            
+                throw new ApiRequestException("No matching document could be found.");
                 }
-
+            
+            else if (format.equals("pdf")) {
+                
+   
                 response.setContentType("application/pdf");
                 PDFConverter.write(sr.getResults().get(0).object, response.getOutputStream());
             }
