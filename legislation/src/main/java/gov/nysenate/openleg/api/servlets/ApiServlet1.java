@@ -13,7 +13,7 @@ import gov.nysenate.openleg.util.RequestUtils;
 import gov.nysenate.openleg.util.SessionYear;
 import gov.nysenate.openleg.util.TextFormatter;
 
-import java.io.IOException;
+import java.io.IOException; 
 import java.io.PrintWriter;
 import java.util.regex.Matcher; 
 import java.util.regex.Pattern;

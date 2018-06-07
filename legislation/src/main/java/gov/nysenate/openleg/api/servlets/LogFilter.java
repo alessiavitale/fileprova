@@ -16,7 +16,7 @@ import org.apache.log4j.Logger;
 /**
  * PJDCC - Summary for class responsabilities.
  * 
- * @author 
+ * @author  
  * @since 
  * @version 
  */

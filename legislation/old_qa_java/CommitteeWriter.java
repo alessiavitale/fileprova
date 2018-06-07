@@ -7,7 +7,7 @@ import gov.nysenate.services.model.Member;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-
+ 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.HelpFormatter;
